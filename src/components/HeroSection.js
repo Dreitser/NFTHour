@@ -1,12 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../App.css';
 import { Button } from './Button';
 import './HeroSection.css';
 
 function HeroSection() {
+  const [locked, setLocked] = useState('pending');
+
+  const unlockHandler = e => {
+    setLocked(e.detail);
+  }
+
+  useEffect(() => {
+    window.addEventListener("unlockProtocol", unlockHandler);
+    return window.removeEventListener("unlockProtocol", unlockHandler);
+  }, []);
+
+  const checkout = () =>{
+    window.unlockProtocol && window.unlockProtocol.loadCheckoutModal();
+  };
+
+
   return (
     <div className='hero-container'>
-      <video src='../videos/video-1.mp4' autoPlay loop muted />
+      <video src='../videos/nfthourvid.mov' autoPlay loop muted />
       <h1>ADVENTURE AWAITS</h1>
       <p>What are you waiting for?</p>
       <div className='hero-btns'>
@@ -21,9 +37,9 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={console.log('hey')}
+          onClick={checkout}
         >
-          WATCH TRAILER <i className='far fa-play-circle' />
+          Enter NFTHour <i className='far fa-play-circle' />
         </Button>
       </div>
     </div>

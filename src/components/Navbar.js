@@ -3,6 +3,8 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
+
+
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -29,8 +31,8 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            TRVL
-            <i class='fab fa-typo3' />
+            NFT HOUR
+            <i className='fab fa-typo3' />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -43,20 +45,20 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/services'
+                to='/EnterGame'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Services
+                Enter Game
               </Link>
             </li>
             <li className='nav-item'>
               <Link
-                to='/products'
+                to='/Inventory'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Products
+                Inventory
               </Link>
             </li>
 
@@ -66,11 +68,11 @@ function Navbar() {
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
-                Sign Up
+                Sync Wallet
               </Link>
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+          {button && <Button buttonStyle='btn--outline'>SYNC</Button>}
         </div>
       </nav>
     </>
